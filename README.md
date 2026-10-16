@@ -1,2 +1,3 @@
-# flux-dj-flx10
-FLUX DJ - FLX10 Edition. 4-deck DJ web app, semi-clone inspired by Rekordbox/Serato.
+# FLUX DJ - FLX10 Edition
+
+4-deck DJ web app. Open index.html after publish to run it.
