@@ -1,0 +1,28 @@
+name: Flux mixer loader
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add mixer JS to index
+        run: |
+          python3 - << 'PY'
+          import pathlib
+          p = pathlib.Path('index.html')
+          t = p.read_text()
+          if 'flux-mixer.js' not in t:
+              t = t.replace('flux-compact.js"></script>', 'flux-compact.js"></script><script defer src="flux-mixer.js"></script>', 1)
+              p.write_text(t)
+          print('flux-mixer loader present:', 'flux-mixer.js' in p.read_text())
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "feat: load mixer channel faders"
+          git push
