@@ -1,0 +1,28 @@
+name: Flux compact loader
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add compact CSS/JS to index
+        run: |
+          python3 - << 'PY'
+          import pathlib
+          p = pathlib.Path('index.html')
+          t = p.read_text()
+          if 'flux-compact.js' not in t:
+              t = t.replace('</head>', '<link rel="stylesheet" href="flux-compact.css"><script defer src="flux-compact.js"></script></head>', 1)
+              p.write_text(t)
+          print('flux-compact loader present:', 'flux-compact.js' in p.read_text())
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "feat: load compact Rekordbox pads, physical crossfader, settings"
+          git push
