@@ -1,24 +1,32 @@
 /* FLUX Rekordbox v4 - short mixer, FX above platters, BPM+Key in jog, rotary LOAD */
 .deck{padding:8px!important}
 .jog{width:112px!important;height:112px!important;min-width:112px!important}
-.jogc{inset:24px!important}
-.bpmBig{font-size:20px!important}
-.jogKey{font-size:11px!important;font-weight:900;color:#ffcf3f}
+.jogc{inset:24px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
+.bpmBig{font-size:20px!important;line-height:1}
+.jogKey{font-size:11px!important;font-weight:900;color:#ffcf3f;letter-spacing:.08em;margin-top:2px}
+.jogInfo{font-size:8px!important}
 .deck .wave{height:72px!important}
-.fxStrip{display:flex!important;gap:8px;flex-wrap:wrap;background:#0c101e;border:1px solid #28304a;border-radius:10px;padding:6px 8px;margin-bottom:8px}
+.sect{margin-top:5px!important;padding-top:4px!important}
+
+.fxStrip{display:flex;align-items:center;gap:8px;flex-wrip.wrap;background:#0c101e;border:1px solid #28304a;border-radius:10px;padding:6px 8px;margin-bottom:8px}
+.fxStrip .fxT{display:flex;gap:4px}.fxStrip .fxT button{padding:5px 8px;font-size:10px}
+.fxStrip .fxB{display:flex;gap:4px}.fxStrip .fxB button{padding:5px 7px;font-size:10px}
+.fxStrip .fxLvl{padding:0}.fxStrip .knob{width:30px!important;height:30px!important}.fxStrip .knob:after{width:21px!important;height:21px!important}
+.fxStrip #fxEcho{padding:5px 8px;font-size:10px}
+
 .perf{align-items:start!important}
-.mixer{padding:8px!important}
-.masterTop .meter{height:26px!important}
+.mixer{padding:8px!important;background:linear-gradient(180deg,#141a28,#080b12)!important;position:sticky;top:64px}
+.fmusterTop{display:flex!important;align-items:center;gap:8px;padding:6px!important;margin-bottom:6px!important;text-align:left!important}
+.masterTop .meter{height:26px!important;flex:1}
+.masterTop .knob{width:34px!important;height:34px!important}.masterTop .knob:after{width:24px!important;height:24px!important}
+.mixer h3{font-size:9px!important;margin:2px 0 5px!important;color:#8b93aa!important}
 .channels{display:flex!important;gap:5px}
-.chan{flex:1;min-width:0;padding:5px 3px!important}
-.chan .knob{width:27px!important;height:27px!important}
-.vfader{height:56px!important;width:34px}
-.xfader{height:38px}
-.pane{display:none!important}.pane.on{display:grid!important}
-.pads8{grid-template-columns:repeat(4,1fr)!important}
-.rolls2{grid-template-columns:repeat(5,1fr)}
-.stemsPane{grid-template-columns:repeat(3,1fr)}
-.sampGrid{grid-template-columns:repeat(4,1fr)}
-.loadKnob .knob.rotary{width:44px!important;height:44px!important}
-.loadBtn{display:none!important}
-#addTestLib,[data-a="test"]{display:none!important}
+.chan{flex:1;min-width:0;background:linear-gradient(180deg,#0d1120,#070a12)!important;border:1px solid #2b3552!important;border-radius:8px!important;padding:5px 3px important;display:flex;flex-direction:column;align-items:center}
+.chan h4{font-size:10px!important;margin:0 0 4px important}
+.chan .knobWrap{padding:1px 0!important}
+.chan .ctl{font-size:7px!important;letter-spacing:.08em!important}
+.chan .knob{width:27px!important;height:27px!important;border-width:1px!important}
+.chan .knob:after{width:19px!important;height:19px!important}
+.chan .knobInd{height:8px!important}
+
+// continued`in part 2 /
