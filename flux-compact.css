@@ -1,0 +1,14 @@
+/* FLUX compact Rekordbox v2 - overrides index.html */
+.deck{padding:8px!important}.jog{width:96px!important;height:96px!important;min-width:96px!important}.jogc{inset:22px!important}.bpmBig{font-size:18px!important}.deck .wave{height:62px!important}.sect{margin-top:5px!important;padding-top:4px!important}
+.padMode{display:flex;gap:4px;margin:4px 0}.padMode button{flex:1;padding:5px 2px;font-size:10px;letter-spacing:.06em}
+.pads8{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:4px}.pads8 .pad{height:28px;font-size:10px;padding:2px}
+.pane{display:none!important}.pane.on{display:grid!important}.rolls2{grid-template-columns:repeat(4,1fr);gap:4px}.sampGrid{grid-template-columns:repeat(4,1fr);gap:4px}.sampGrid .pad{height:28px;font-size:10px}
+.xfader{position:relative;height:42px;background:linear-gradient(180deg,#05070d,#111827);border:1px solid #343c5c;border-radius:8px;touch-action:none;cursor:ew-resize;overflow:hidden}
+.xfader:before{content:'';position:absolute;left:12px;right:12px;top:50%;height:8px;transform:translateY(-50%);background:linear-gradient(180deg,#000,#1b2133,#000);border:1px solid #28304a;border-radius:4px}
+.xfCenter{position:absolute;left:50%;top:4px;bottom:4px;width:2px;background:#00c2ff;opacity:.7}
+.xfCap{position:absolute;top:3px;width:46px;height:36px;margin-left:-23px;background:linear-gradient(90deg,#111,#4a587f 45%,#eef1ff 50%,#4a587f 55%,#111);border:1px solid #000;border-radius:4px;box-shadow:0 3px 8px #000c;pointer-events:none}
+.xfCap:after{content:'';position:absolute;left:50%;top:3px;bottom:3px;width:2px;margin-left:-1px;background:#ff3860}
+.xfLbl{display:flex;justify-content:space-between;margin-top:4px}
+.setPanel{position:fixed;inset:0;background:#0009;z-index:99;display:none;place-items:center}.setPanel.on{display:grid}
+.setBox{background:#0c101e;border:1px solid #3a4568;border-radius:14px;padding:16px;width:min(560px,94vw);max-height:88vh;overflow:auto}
+.setRow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid #222941}.setRow label{font-size:12px}
