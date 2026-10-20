@@ -1,0 +1,38 @@
+name: Flux 2-deck fix
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hide decks 3/4 in 2-deck mode
+        run: |
+          python3 - << 'PY'
+          import pathlib
+          p = pathlib.Path('index.html')
+          t = p.read_text()
+          css = 'body[data-deck-mode="2"] #deck3,body[data-deck-mode="2"] #deck4,body[data-deck-mode="2"] .swRow[data-sw="3"],body[data-deck-mode="2"] .swRow[data-sw="4"],body[data-deck-mode="2"] #chan3,body[data-deck-mode="2"] #chan4{display:none!important}'
+          if '#deck3,body[data-deck-mode="2"] #deck4' not in t:
+              anchor = '.is-hidden{display:none!important}'
+              assert anchor in t, 'css anchor missing'
+              t = t.replace(anchor, anchor + css, 1)
+          old = 'buildStacks();renderLibSide();'
+          new = 'buildStacks();setDeckMode(deckMode);renderLibSide();'
+          if old in t:
+              t = t.replace(old, new, 1)
+          assert new in t, 'init reapply missing'
+          assert '#deck3,body[data-deck-mode="2"] #deck4' in t, 'css safeguard missing'
+          p.write_text(t)
+          print('2-deck fix present:', '#deck3' in p.read_text() and 'buildStacks();setDeckMode(deckMode);' in p.read_text())
+          PY
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git diff --cached --quiet || git commit -m "fix: hide decks 3/4 in 2-deck mode"
+          git pull --rebase origin main
+          git push
